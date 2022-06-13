@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="mt-4 col-4 d-flex align-items-center">
+        {{!-- <h3 style="text-align: center">Thêm sinh viên</h3> --}}
+        <form class="">
+            <div class="form-group">
+                <label for="inputAddress">Họ và tên</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Họ và tên">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <label for="inputEmail4">Mã số sinh viên</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Mã số sinh viên">
+                </div>
+                <div class="form-group col-md-6">
+                <label for="inputPassword4">Lớp</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Lớp">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Thêm</button>
+        </form>
+    </div>
+
+    <div class="mt-4 col-8" >
+        <h3 style="text-align: center">Danh sách sinh viên</h3>
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">MSSV</th>
+                    <th scope="col">Họ và tên</th>
+                    <th scope="col">Lớp</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.mssv}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.class}}</td>
+                    <td>
+                        <a href="/users/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                        <a href="#" class="btn btn-link">Xóa</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

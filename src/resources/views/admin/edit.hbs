@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-center mt-2">
+    {{#each admin}}
+    <form class="mt-4 col-8" method="POST" action="/admin/{{this._id}}?_method=PUT">
+        <h3 style="text-align: center">UPDATE YOUR ACCOUNT INFOMATION</h3>
+        <div class="form-group">
+            <label for="mssv">Admin Name</label>
+            <input type="text" class="form-control" id="admin-name"  value="{{this.admin}}" name="admin" placeholder="{{this.admin}}">
+        </div>
+        <div class="form-group">
+            <label for="name">New Password</label>
+            <input type="text" class="form-control" id="new-password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {{/each}}
+</div>
