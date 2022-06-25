@@ -39,9 +39,12 @@ class UsersController{
     getData(req,res,next){
         const fromData = req.query
         const date = new Date()
+        const hours = date.getHours().toString().length === 1 ? '0' + date.getHours() : date.getHours();
+        const minutes = date.getMinutes().toString().length === 1 ? '0' + date.getMinutes() : date.getMinutes();
+        const seconds = date.getSeconds().toString().length === 1 ? '0' + date.getSeconds() : date.getSeconds();
         fromData.Date = date
-        fromData.date =  (date.getDate()) + '/' + (date.getMonth()+1) + '/' + date.getFullYear()
-        fromData.timein =  date.getHours() + ' : ' + date.getMinutes() + ' : ' + date.getSeconds()
+        fromData.date =  date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()
+        fromData.timein = hours + ':' + minutes + ':' + seconds
         fromData.condition = true
         console.log(fromData)
         User.updateOne({mssv: req.query.mssv}, fromData)

@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const methodOverride = require('method-override')
 const { engine } = require('express-handlebars');
-const port = 8080
+const port = 3000
 
 const db = require('./config/db');
 const route = require('./routes/index');
