@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express')
+const logger = require('morgan');
 const app = express()
 const methodOverride = require('method-override')
 const { engine } = require('express-handlebars');
@@ -12,7 +13,7 @@ const route = require('./routes/index');
 db.connect();
 
 
-
+app.use(logger('dev'));
 app.use(
   express.urlencoded({
     extended: true,
@@ -26,7 +27,13 @@ app.engine(
   engine({
     extname: '.hbs',
     helpers: {
-      sum: (a,b) => a + b
+      sum: (a,b) => a + b,
+      for: function(from, to, incr, block) {
+        var accum = '';
+        for(var i = from; i < to; i += incr)
+            accum += block.fn(i);
+        return accum;
+    }
     }
   }),
 );

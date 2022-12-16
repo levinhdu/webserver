@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="mt-4 col">
+    <h3 style="text-align: center">DANH SÁCH NHÂN VIÊN ĐI TRỄ</h3>
+    <div style="display: flex;">
+      <a href="/employee/log" style="margin-right: 10px;">Quay lại</a>
+      <a href="/employee/thongke">Xuất file thống kê</a>
+    </div>
+    <div style="min-height: 420px;">
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID Nhân viên</th>
+            <th scope="col">Họ và tên</th>
+            <th scope="col">Chức vụ</th>
+            <th class="text-center" scope="col">Nhiệt độ vào</th>
+            <th class="text-center" scope="col">Nhiệt độ ra</th>
+            <th scope="col">Ngày</th>
+            <th scope="col">Thời gian vào</th>
+            <th scope="col">Thời gian ra</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+            <tr>
+              <th scope="row">{{sum @index 1}}</th>
+              <td>{{this.employeeId.id_nv}}</td>
+              <td>{{this.employeeId.name}}</td>
+              <td>{{this.employeeId.position}}</td>
+              <td class="text-center">{{this.tempin}}</td>
+              <td class="text-center">{{this.tempout}}</td>
+              <td>{{this.date}}</td>
+              <td>{{this.timein}}</td>
+              <td>{{#if in}}{{else}}
+                  {{this.timeout}}
+                {{/if}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        {{#for 1 4 1}}
+          <li class="page-item"><a
+              class="page-link"
+              href="/employee/late/{{this}}"
+            >{{this}}</a></li>
+        {{/for}}
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,13 +1,14 @@
 <div class="row">
     <div class="mt-4 col ">
-        <h3 style="text-align: center">HERE ARE ALL THE USERS</h3>
+        <h3 style="text-align: center">DANH SÁCH NHÂN VIÊN</h3>
         <table class="table mt-4">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Student ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Class</th>
+                    <th scope="col">ID Nhân Viên</th>
+                    <th scope="col">Họ và tên</th>
+                    <th scope="col">Chức vụ</th>
+                    <th scope="col">Số điện thoại</th>
                     <th></th>
                 </tr>
             </thead>
@@ -15,12 +16,13 @@
                 {{#each users}}
                 <tr>
                     <th scope="row">{{sum @index 1}}</th>
-                    <td>{{this.mssv}}</td>
+                    <td>{{this.id_nv}}</td>
                     <td>{{this.name}}</td>
-                    <td>{{this.class}}</td>
+                    <td>{{this.position}}</td>
+                    <td>{{this.phone}}</td>
                     <td>
-                        <a href="/users/{{this._id}}/edit" class="btn btn-link">Update</a>
-                        <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#modal-course-delete">Delete</a>
+                        <a href="/employee/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                        <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#modal-course-delete">Xóa</a>
                     </td>
                 </tr>
                 {{/each}}
@@ -34,13 +36,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete user?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Delete employee?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Are you sure to delete the user?</p>
+        <p>Are you sure to delete the employee?</p>
       </div>
       <div class="modal-footer">
         <button id="btn-delete-course" type="button" class="btn btn-danger">Delete</button>
@@ -66,7 +68,7 @@
       })
       
       btnDeleteCourse.onclick = function (){
-        deleteForm.action = '/users/' + courseId + '?_method=DELETE'
+        deleteForm.action = '/employee/' + courseId + '?_method=DELETE'
         deleteForm.submit()
       }
 

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="mt-4 col">
+    <h3 style="text-align: center">DANH SÁCH NHÂN VIÊN BỊ SỐT</h3>
+    <a href="/employee/log">Quay lại</a>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ID Nhân viên</th>
+          <th scope="col">Họ và tên</th>
+          <th scope="col">Chức vụ</th>
+          <th class="text-center" scope="col">Nhiệt độ vào</th>
+          <th class="text-center" scope="col">Nhiệt độ ra</th>
+          <th scope="col">Ngày</th>
+          <th scope="col">Thời gian vào</th>
+          <th scope="col">Thời gian ra</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+          <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.employeeId.id_nv}}</td>
+            <td>{{this.employeeId.name}}</td>
+            <td>{{this.employeeId.position}}</td>
+            <td class="text-center">{{this.tempin}}</td>
+            <td class="text-center">{{this.tempout}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.timein}}</td>
+            <td>{{this.timeout}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  window.setInterval('refresh()', 5000); // Call a function every 10000
+  milliseconds // (OR 10 seconds). // Refresh or reload page. function refresh()
+  { window .location.reload(); }
+</script>

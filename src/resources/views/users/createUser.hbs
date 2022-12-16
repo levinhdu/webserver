@@ -1,20 +1,54 @@
-<div class="mt-4 ">
-        <h3 >ADD A NEW USER</h3>
-        <form method="POST" action="/users/store">
-            <div class="form-group row">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
-            </div>
-            
-             <div class="form-group row">
-                <label for="mssv">Student ID</label>
-                <input type="text" class="form-control" id="mssv" name="mssv" placeholder="Student ID">
-            </div>
-            <div class="form-group row">
-                <label for="class">Class</label>
-                <input type="text" class="form-control" id="class" name="class" placeholder="Class">
-            </div>   
-            
-            <button type="submit" class="btn btn-primary btn-lg ">Add</button>
-        </form>
+<div class="mt-4">
+  <h3>THÊM NHÂN VIÊN MỚI</h3>
+  <form method="POST" action="/employee/store">
+    <div class="form-group row">
+      <label for="name">Họ và tên</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Full Name"
+      />
+    </div>
+
+    <div class="form-group row">
+      <label for="mssv">ID Nhân viên</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id_nv"
+        name="id_nv"
+        placeholder="ID Nhân viên"
+      />
+    </div>
+        {{!-- <select  class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Chức vụ</option>
+        <option value="1">Bác sĩ</option>
+        <option value="2">Điều dưỡng</option>
+        <option value="3">Hộ lý</option>
+        </select> --}}
+    <div class="form-group row">
+      <label for="class">Chức vụ</label>
+      <input
+        type="text"
+        class="form-control"
+        id="position"
+        name="position"
+        placeholder="Chức vụ"
+      />
+    </div>
+    <div class="form-group row">
+      <label for="class">Số điện thoại</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        name="phone"
+        placeholder="Số điện thoại"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Add</button>
+  </form>
 </div>

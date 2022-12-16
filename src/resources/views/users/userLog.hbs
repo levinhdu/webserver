@@ -1,44 +1,73 @@
 <div class="row">
-    <div class="mt-4 col">
-        <h3 style="text-align: center">HERE ARE THE STUDENTS DAILY LOGS</h3>
-        <table class="table mt-4 ">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Student ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Class</th>
-                    <th class="text-center" scope="col">Temperature</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time in</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each users}}
-                <tr>
-                    <th scope="row">{{sum @index 1}}</th>
-                    <td>{{this.mssv}}</td>
-                    <td>{{this.name}}</td>
-                    <td>{{this.class}}</td>
-                    <td class="text-center">{{this.temp}}</td>
-                    <td>{{this.date}}</td>
-                    <td>{{this.timein}}</td>
-
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+  <div class="mt-4 col">
+    <h3 style="text-align: center">DANH SÁCH NHÂN VIÊN RA VÀO</h3>
+    <a href="/employee/late">Danh sách nhân viên đi trễ</a><br />
+    <a href="/employee/fever">Danh sách nhân viên bị sốt</a>
+    <div style="min-height: 420px;">
+      <table class="table mt-4" >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ID Nhân viên</th>
+          <th scope="col">Họ và tên</th>
+          <th scope="col">Chức vụ</th>
+          <th class="text-center" scope="col">Nhiệt độ vào</th>
+          <th class="text-center" scope="col">Nhiệt độ ra</th>
+          <th scope="col">Ngày</th>
+          <th scope="col">Thời gian vào</th>
+          <th scope="col">Thời gian ra</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+          <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td class="text-center">{{this.employeeId.id_nv}}</td>
+            <td>{{this.employeeId.name}}</td>
+            <td class="text-center">{{this.employeeId.position}}</td>
+            <td class="text-center">{{this.tempin}}</td>
+            <td class="text-center">{{this.tempout}}</td>
+            <td>{{this.date}}</td>
+            <td class="text-center">{{this.timein}}</td>
+            <td class="text-center">
+              {{#if in}}{{else}}
+                {{this.timeout}}
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
     </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        {{#for 1 6 1}}
+        <li class="page-item"><a class="page-link" href="/employee/log/{{this}}">{{this}}</a></li>
+        {{/for}}
+      </ul>
+    </nav>
+  </div>
 </div>
-
+{{! <nav aria-label="Page navigation example" >
+  <ul class="pagination text-center" >
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item" ><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav> }}
 <script>
-    window.setInterval('refresh()', 5000); 	
-    // Call a function every 10000 milliseconds 
-    // (OR 10 seconds).
-
-    // Refresh or reload page.
-    function refresh() {
-        window .location.reload();
-    }
+  window.setInterval('refresh()', 5000); // Call a function every 10000
+  milliseconds // (OR 10 seconds). // Refresh or reload page. function refresh()
+  { window .location.reload(); }
 </script>

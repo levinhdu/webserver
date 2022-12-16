@@ -1,4 +1,4 @@
-const {Admin} = require('./models/User');
+const Admin = require('./models/Admin');
 const {mutipleMongooseToOject,mongoosetoOject} = require('../../until/mongoose');
 
 
@@ -19,7 +19,7 @@ class LoginController{
         })
             .then(admin => {
                 if(admin){
-                    res.redirect('/users')
+                    res.redirect('/employee')
                 } else{
                     res.redirect('back')
                 }
@@ -39,7 +39,7 @@ class LoginController{
     //[PUT] /courses/:id
     update(req, res, next) {
         Admin.updateOne({_id: req.params.id}, req.body)
-        .then(() => res.redirect('/users'))
+        .then(() => res.redirect('/employee'))
         .catch(next)
     }
 }
