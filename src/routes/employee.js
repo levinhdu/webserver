@@ -7,7 +7,7 @@ const MiddlewareController = require('../app/controllers/MiddlewareController');
 
 
 route.get('/create', employeeController.create);
-route.get('/thongke', employeeController.thongke);
+route.post('/thongke', employeeController.thongke);
 route.get('/home', employeeController.home);
 route.get('/log', employeeController.log);
 route.get('/log/:page', employeeController.log);

@@ -83,8 +83,10 @@ class UsersController {
   }
 
   thongke(req, res, next) {
-    const fromDate = new Date("2022-11-16");
-    const tmpToDate = new Date("2022-12-16");
+    const {fDate, tDate} = req.body
+    if(fDate && tDate){
+      const fromDate = new Date(req.body.fDate);
+    const tmpToDate = new Date(req.body.tDate);
     const toDate = new Date(tmpToDate.setDate(tmpToDate.getDate() + 1));
     const compareFromDate = { $gte: ["$createdAt", fromDate] };
     const compareToDate = { $lt: ["$createdAt", toDate] };
@@ -182,7 +184,7 @@ class UsersController {
         };
 
         const heading = [
-          [{value: "Thống kê nhân viên đi trễ trong 1 tháng", style: styles.header}],
+          [{value: `Thống kê nhân viên đi trễ từ ${fDate} đến ${tDate}`, style: styles.header}],
           [''] // <-- It can be only values
         ];
 
@@ -231,6 +233,10 @@ class UsersController {
         return res.send(report);
       })
       .catch((err) => console.log(err));
+    }
+    else{
+      res.redirect('back')
+    }
   }
 
   employeeLate(req, res, next) {
